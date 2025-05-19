@@ -16,7 +16,7 @@
         }
         
         body {
-            background: #0f0f12;
+            background: #0a0a0e;
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -26,6 +26,27 @@
             overflow-x: hidden;
             perspective: 1000px;
             padding: 20px;
+            background-image: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+        }
+        
+        .azzam-banner {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff8a00, #e52e71);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 100;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         .logo {
@@ -58,21 +79,66 @@
             border-radius: 2px;
         }
         
+        .login-container {
+            background: rgba(20, 20, 25, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .login-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #4a6bff, #6a4bff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .password-input:focus {
+            outline: none;
+            background: rgba(255,255,255,0.15);
+            box-shadow: 0 0 0 2px #4a6bff;
+        }
+        
         .buttons-container {
             display: flex;
             flex-direction: column;
-            gap: 30px;
-            width: 90%;
-            max-width: 500px;
-            margin-top: 30px;
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+            display: none;
         }
         
         .btn-3d {
             position: relative;
-            padding: 20px 30px;
+            padding: 18px 30px;
             border: none;
-            border-radius: 15px;
-            font-size: 1.2rem;
+            border-radius: 12px;
+            font-size: 1.1rem;
             font-weight: bold;
             color: white;
             cursor: pointer;
@@ -85,7 +151,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .btn-3d::before {
@@ -135,7 +201,19 @@
         
         .btn-support {
             background: linear-gradient(45deg, #00b4db, #0083b0);
-            margin-top: 20px;
+        }
+        
+        .btn-get-password {
+            background: linear-gradient(45deg, #9c27b0, #e91e63);
+            margin-top: 15px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            width: 100%;
+            padding: 16px;
+            font-size: 1.2rem;
+            margin-top: 10px;
         }
         
         .info-modal {
@@ -173,67 +251,20 @@
             to { opacity: 1; transform: translateY(0) rotateX(0); }
         }
         
-        .info-box h2 {
+        .error-message {
+            color: #ff6b6b;
             text-align: center;
-            margin-bottom: 30px;
-            color: #fff;
-            font-size: 2rem;
-            background: linear-gradient(45deg, #ff8a00, #e52e71);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .info-content {
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-        
-        .info-content h3 {
-            color: #4a6bff;
-            margin: 20px 0 10px;
-            font-size: 1.4rem;
-        }
-        
-        .info-content ul {
-            margin: 15px 0;
-            padding-right: 20px;
-        }
-        
-        .info-content li {
-            margin-bottom: 10px;
-            position: relative;
-            padding-right: 25px;
-        }
-        
-        .info-content li::before {
-            content: "\f00c";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            position: absolute;
-            right: 0;
-            color: #28a745;
-        }
-        
-        .close-info {
-            display: block;
-            margin: 30px auto 0;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #ff6b6b, #e52e71);
-            color: white;
-            border: none;
-            border-radius: 50px;
+            margin-bottom: 15px;
             font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+            display: none;
         }
         
-        .close-info:hover {
-            background: linear-gradient(45deg, #e52e71, #ff6b6b);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
+        .success-message {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            display: none;
         }
         
         @media (max-width: 768px) {
@@ -241,25 +272,39 @@
                 font-size: 3rem;
             }
             
+            .login-container {
+                padding: 30px;
+            }
+            
             .btn-3d {
-                padding: 18px 25px;
-                font-size: 1.1rem;
-            }
-            
-            .info-box {
-                padding: 20px;
-            }
-            
-            .info-content {
+                padding: 16px 25px;
                 font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
+    
+    
     <div class="logo">SATA & iphone</div>
     
-    <div class="buttons-container">
+    <div class="login-container">
+        <h2 class="login-title"></h2>
+        <p class="error-message">كلمة المرور غير صحيحة، يرجى المحاولة مرة أخرى</p>
+        <p class="success-message">تم التحقق بنجاح! جاري التحميل...</p>
+        
+        <input type="password" class="password-input" placeholder="كلمة المرور" id="passwordInput">
+        
+        <button class="btn-3d btn-submit" id="submitPassword">
+            <i class="fas fa-lock"></i> تسجيل الدخول
+        </button>
+        
+        <button class="btn-3d btn-get-password" id="getPassword">
+            <i class="fab fa-whatsapp"></i> الحصول على كلمة المرور
+        </button>
+    </div>
+    
+    <div class="buttons-container" id="mainContent">
         <a href="https://azzam-shop.vatrin.app" class="btn-3d btn-main" target="_blank">
             <i class="fas fa-store"></i> المتجر الإلكتروني
         </a>
@@ -310,17 +355,6 @@
                     <li>جدران حماية متقدمة</li>
                 </ul>
                 
-                <h3>📊 إحصائيات النظام</h3>
-                <ul>
-                    <li>يدعم أكثر من 10,000 منتج</li>
-                    <li>يتحمل أكثر من 1000 طلب في الدقيقة</li>
-                    <li>وقت استجابة أقل من 0.5 ثانية</li>
-                    <li>متاح على مدار 24/7</li>
-                </ul>
-                
-                <h3>📞 الدعم الفني</h3>
-                <p>فريق الدعم الفني متاح على مدار الساعة لمساعدتك في أي استفسارات أو مشاكل تواجهك أثناء استخدام النظام.</p>
-                
                 <button id="closeInfo" class="close-info">إغلاق</button>
             </div>
         </div>
@@ -328,10 +362,75 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Valid passwords (20 one-time use passwords)
+            const validPasswords = [
+                "SATA@2023#1", "IPHONE$456", "AZZAM@789", "STORE#2023", 
+                "VIP@PASS1", "SECURE#123", "ACCESS@456", "LOGIN$789", 
+                "SHOP@2023", "PASSWORD#1", "ENTRY@456", "WELCOME$7", 
+                "PROTECT#1", "SAFE@2023", "VALID$456", "ONETIME#7", 
+                "UNIQUE@1", "RANDOM#23", "TEMPORARY$4", "SINGLE#USE"
+            ];
+            
+            let usedPasswords = JSON.parse(localStorage.getItem('usedPasswords')) || [];
+            
             // Elements
+            const passwordInput = document.getElementById('passwordInput');
+            const submitPassword = document.getElementById('submitPassword');
+            const getPassword = document.getElementById('getPassword');
+            const errorMessage = document.querySelector('.error-message');
+            const successMessage = document.querySelector('.success-message');
+            const loginContainer = document.querySelector('.login-container');
+            const mainContent = document.getElementById('mainContent');
             const infoBtn = document.getElementById('infoBtn');
             const infoModal = document.getElementById('infoModal');
             const closeInfo = document.getElementById('closeInfo');
+            
+            // Check if already logged in
+            if (localStorage.getItem('isAuthenticated') === 'true') {
+                loginContainer.style.display = 'none';
+                mainContent.style.display = 'flex';
+            }
+            
+            // Submit password
+            submitPassword.addEventListener('click', function() {
+                const enteredPassword = passwordInput.value.trim();
+                
+                if (validPasswords.includes(enteredPassword) && !usedPasswords.includes(enteredPassword)) {
+                    // Valid password
+                    errorMessage.style.display = 'none';
+                    successMessage.style.display = 'block';
+                    
+                    // Mark password as used
+                    usedPasswords.push(enteredPassword);
+                    localStorage.setItem('usedPasswords', JSON.stringify(usedPasswords));
+                    
+                    // Save authentication
+                    localStorage.setItem('isAuthenticated', 'true');
+                    
+                    // Show main content after delay
+                    setTimeout(() => {
+                        loginContainer.style.display = 'none';
+                        mainContent.style.display = 'flex';
+                    }, 1500);
+                } else {
+                    // Invalid password
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    
+                    // Shake animation for error
+                    loginContainer.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        loginContainer.style.animation = '';
+                    }, 500);
+                }
+            });
+            
+            // Get password via WhatsApp
+            getPassword.addEventListener('click', function() {
+                const randomPassword = validPasswords.find(p => !usedPasswords.includes(p));
+                const whatsappMessage = `مرحباً، أريد كلمة المرور للوصول إلى متجر SATA. الكلمة المتاحة: ${randomPassword || 'لا توجد كلمات متاحة حالياً'}`;
+                window.open(`https://wa.me/201044293227?text=${encodeURIComponent(whatsappMessage)}`, '_blank');
+            });
             
             // Info Button Click
             infoBtn.addEventListener('click', function() {
@@ -378,6 +477,17 @@
                     button.style.transform = 'rotateX(0) rotateY(0) translateY(0)';
                 });
             });
+            
+            // Add shake animation
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    20%, 60% { transform: translateX(-10px); }
+                    40%, 80% { transform: translateX(10px); }
+                }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
